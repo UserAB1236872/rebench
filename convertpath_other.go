@@ -2,6 +2,10 @@
 
 package main
 
+import (
+	"strings"
+)
+
 func convertPath(pathFromTest string) string {
 	return pathFromTest
 }
