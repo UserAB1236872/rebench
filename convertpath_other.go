@@ -15,5 +15,5 @@ func getPieces(path string) []string {
 }
 
 func reform(pieces ...string) string {
-	return strings.Join(path, "/")
+	return strings.Join(pieces, "/")
 }
