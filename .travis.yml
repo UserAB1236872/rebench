@@ -1,0 +1,23 @@
+branches:
+ only:
+  - master
+
+language: go
+
+go:
+ - 1.2
+
+script:
+ - go get -d -v ./... && go build -v ./...
+ - go test -v . # Only test the base package, since subpackages are mocks for testing purposes
+ - diff <(gofmt -d .) <("") 
+
+after_failure: failure
+after_error: failure
+
+notifications:
+  email:
+    recipients:
+      - jragonmiris@gmail.com
+    on_success: change
+    on_failure: always
