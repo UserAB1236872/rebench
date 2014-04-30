@@ -299,12 +299,13 @@ func findGosrc(pwd, pkgName string) string {
 
 func runAndStoreBenches() (map[string]map[string]uint64, error) {
 
-	log.Println("Running go test -bench=. -run=lksadfjalsdjfalskdfjalskdf ./...")
+	log.Println("Running go test -bench=. -run=^$ ./...")
 
 	// -run=lksadfjalsdjfalskdfjalskdf makes it... incredibly unlikely that the tool will run any tests
 	// I know of no way to outright inform "go test" to outright not run any TestXxx functions.
-	gotest := exec.Command("go", "test", "-bench=.", "-run=lksadfjalsdjfalskdfjalskdf", "./...")
-	out, err := gotest.Output()
+	gotest := exec.Command("go", "test", "-bench=.", "-run=^$", "./...")
+	out, err := gotest.CombinedOutput()
+	log.Println(err)
 	if err != nil {
 		log.Println("go test returned with non-zero return value, aborting")
 		return nil, errors.New("Problem running go test")

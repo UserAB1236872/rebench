@@ -2,14 +2,14 @@ package main
 
 import (
 	"io"
-	"io/ioutil"
-	"log"
+	//"io/ioutil"
+	//"log"
 	"os"
 	"testing"
 )
 
 func init() {
-	log.SetOutput(ioutil.Discard)
+	//log.SetOutput(ioutil.Discard)
 }
 
 func cd(t *testing.T) string {
